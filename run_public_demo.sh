@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
+ROOT="$(cd "$(dirname "$0")" && pwd)"
+cd "$ROOT"
 export PYTHONPATH="$PWD:${PYTHONPATH:-}"
-rm -rf outputs/*
 mkdir -p outputs
 python3 scripts/verify_public_boundary.py
 python3 scripts/run_pipeline.py

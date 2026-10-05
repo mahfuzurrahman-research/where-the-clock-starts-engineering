@@ -6,3 +6,4 @@ outputs/*
 *.sqlite
 *.sqlite3
 .DS_Store
+.pytest_cache/

@@ -1,0 +1,20 @@
+{
+  "protocol": "synthetic-process-stream-v1",
+  "seed": 20261006,
+  "synthetic_only": true,
+  "establishes_legal_breach": false,
+  "establishes_wrongdoing": false,
+  "stages": ["ISSUED", "NOTIFIED", "VISITED", "REPORTED", "DECIDED"],
+  "service_groups": ["FLOW_A", "FLOW_B"],
+  "late_policy": "retain_and_revise",
+  "allowed_lateness_hours": 24,
+  "baseline_cutoff": "2026-01-15T00:00:00Z",
+  "observed_at": "2026-02-01T00:00:00Z",
+  "minimum_baseline_cases": 12,
+  "mad_scale_floor": 0.1,
+  "duration_score_threshold": 3.5,
+  "absolute_duration_hours": 72,
+  "open_age_hours": 72,
+  "notification_wait_hours": 96,
+  "generation": {"training_cases": 60, "monitoring_cases": 36}
+}

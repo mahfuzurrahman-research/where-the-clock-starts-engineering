@@ -2,8 +2,16 @@ import csv
 from pathlib import Path
 
 def reconcile(cases_csv,stages_csv):
-    with Path(cases_csv).open(newline='',encoding='utf-8') as f: cases={r['case_id']:r for r in csv.DictReader(f)}
-    with Path(stages_csv).open(newline='',encoding='utf-8') as f: stages={r['case_id']:r for r in csv.DictReader(f)}
+    def indexed(path):
+        result={}
+        with Path(path).open(newline='',encoding='utf-8') as f:
+            for row in csv.DictReader(f):
+                key=row.get('case_id')
+                if not key or key in result: raise ValueError('Invalid/duplicate checkpoint key')
+                result[key]=row
+        if not result: raise ValueError('Empty checkpoint')
+        return result
+    cases=indexed(cases_csv); stages=indexed(stages_csv)
     if set(cases)!=set(stages): raise ValueError('Checkpoint key sets disagree')
     for cid in sorted(cases):
         c,s=cases[cid],stages[cid]

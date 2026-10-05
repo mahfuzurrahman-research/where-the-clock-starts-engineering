@@ -7,14 +7,22 @@ permissions:
 jobs:
   validate:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Run public engineering demonstration
-        run: ./run_public_demo.sh
+      - name: Install test dependency
+        run: python -m pip install -r requirements.txt
+      - name: Run both public demos and their tests
+        run: ./run_all_demos.sh
       - name: Build Docker image
         run: docker build -t where-the-clock-starts-engineering .
       - name: Run Docker image
         run: docker run --rm where-the-clock-starts-engineering
+      - name: Upload public replay and review artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: synthetic-event-stream-validation
+          path: outputs/
