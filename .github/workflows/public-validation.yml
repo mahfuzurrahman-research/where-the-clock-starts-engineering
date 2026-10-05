@@ -1,0 +1,20 @@
+name: Public engineering validation
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run public engineering demonstration
+        run: ./run_public_demo.sh
+      - name: Build Docker image
+        run: docker build -t where-the-clock-starts-engineering .
+      - name: Run Docker image
+        run: docker run --rm where-the-clock-starts-engineering

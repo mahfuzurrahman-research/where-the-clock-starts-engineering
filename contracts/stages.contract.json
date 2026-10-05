@@ -1,0 +1,27 @@
+{
+  "contract_name": "synthetic_stage_checkpoint",
+  "version": "1.0",
+  "required_columns": [
+    "case_id",
+    "primary_flag",
+    "stage_eligible",
+    "second_stage_indicator",
+    "clock_flag",
+    "issue_date",
+    "notification_date",
+    "visit_date",
+    "report_date",
+    "decision_date"
+  ],
+  "binary_columns": [
+    "primary_flag",
+    "stage_eligible"
+  ],
+  "rules": [
+    "case_id_unique",
+    "stage_requires_primary",
+    "stage_requires_complete_clock",
+    "nonstage_requires_blank_clock_flag",
+    "chronology_non_decreasing"
+  ]
+}

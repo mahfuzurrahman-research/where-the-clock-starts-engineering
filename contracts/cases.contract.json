@@ -1,0 +1,24 @@
+{
+  "contract_name": "synthetic_case_checkpoint",
+  "version": "1.0",
+  "required_columns": [
+    "case_id",
+    "decision_period",
+    "primary_flag",
+    "process_flag",
+    "payment_flag",
+    "inspection_count",
+    "reported_delay_days"
+  ],
+  "binary_columns": [
+    "primary_flag",
+    "process_flag",
+    "payment_flag"
+  ],
+  "rules": [
+    "case_id_unique",
+    "process_requires_primary",
+    "payment_requires_process",
+    "inspection_count_nonnegative"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "contract_name": "synthetic_process_clock",
+  "version": "1.0",
+  "ordered_fields": [
+    "issue_date",
+    "notification_date",
+    "visit_date",
+    "report_date",
+    "decision_date"
+  ],
+  "stage_requires_complete_clock": true,
+  "clock_flag_domain": [
+    "0",
+    "1"
+  ],
+  "interpretation_boundary": {
+    "clock_flag_establishes_error": false,
+    "clock_flag_establishes_wrongdoing": false,
+    "reported_delay_establishes_legal_breach": false,
+    "causal_effect_established": false
+  }
+}
